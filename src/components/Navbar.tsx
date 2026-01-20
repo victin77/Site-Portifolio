@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ThemeToggle from './ThemeToggle';
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -74,6 +75,9 @@ export default function Navbar() {
                   </li>
                 ))}
               </ul>
+
+              {/* Theme Toggle */}
+              <ThemeToggle />
 
               {/* Mobile Menu Button */}
               <button className="md:hidden p-2">
