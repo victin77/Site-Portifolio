@@ -55,8 +55,8 @@ export default function AboutSection() {
           >
             {[
               { number: '3+', label: 'Anos de Experiência' },
-              { number: '20+', label: 'Projetos Realizados' },
-              { number: '15+', label: 'Tecnologias' },
+              { number: '2+', label: 'Projetos Realizados' },
+              { number: '10+', label: 'Tecnologias' },
               { number: '100%', label: 'Dedicação' },
             ].map((stat, index) => (
               <motion.div
