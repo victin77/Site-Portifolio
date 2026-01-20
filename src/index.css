@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* MONOCHROMATIC LUXURY DESIGN SYSTEM */
+
+@layer base {
+  :root {
+    /* Core Monochromatic Palette */
+    --background: 0 0% 3%;
+    --foreground: 0 0% 96%;
+    
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 96%;
+    
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 96%;
+    
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 3%;
+    
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 88%;
+    
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 62%;
+    
+    --accent: 0 0% 22%;
+    --accent-foreground: 0 0% 96%;
+    
+    --destructive: 0 0% 35%;
+    --destructive-foreground: 0 0% 96%;
+    
+    --border: 0 0% 20%;
+    --input: 0 0% 14%;
+    --ring: 0 0% 48%;
+    
+    --radius: 0.25rem;
+    
+    /* Luxury Grays */
+    --gray-50: 0 0% 98%;
+    --gray-100: 0 0% 92%;
+    --gray-200: 0 0% 80%;
+    --gray-300: 0 0% 62%;
+    --gray-400: 0 0% 48%;
+    --gray-500: 0 0% 32%;
+    --gray-600: 0 0% 22%;
+    --gray-700: 0 0% 14%;
+    --gray-800: 0 0% 10%;
+    --gray-900: 0 0% 7%;
+    --gray-950: 0 0% 3%;
+    
+    /* Glass Effects */
+    --glass-bg: 0 0% 8% / 0.6;
+    --glass-border: 0 0% 25% / 0.2;
+    --glass-blur: 20px;
+    
+    /* Shadows */
+    --shadow-subtle: 0 4px 30px hsl(0 0% 0% / 0.3);
+    --shadow-elevated: 0 8px 50px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 60px hsl(0 0% 100% / 0.03);
+    
+    /* Sidebar */
+    --sidebar-background: 0 0% 3%;
+    --sidebar-foreground: 0 0% 70%;
+    --sidebar-primary: 0 0% 95%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 12%;
+    --sidebar-ring: 0 0% 40%;
+  }
+
+  .dark {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    @apply font-medium tracking-tight;
+  }
+  
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+}
+
+@layer components {
+  /* Glass Morphism */
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid hsl(var(--glass-border));
+  }
+  
+  .glass-subtle {
+    background: hsl(0 0% 5% / 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  /* Luxury Text Styles */
+  .text-display {
+    font-family: 'Space Grotesk', sans-serif;
+    @apply text-6xl md:text-8xl lg:text-9xl font-light tracking-tighter;
+  }
+  
+  .text-headline {
+    font-family: 'Space Grotesk', sans-serif;
+    @apply text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight;
+  }
+  
+  .text-subhead {
+    font-family: 'Space Grotesk', sans-serif;
+    @apply text-xl md:text-2xl font-light tracking-wide uppercase;
+    color: hsl(var(--gray-300));
+  }
+  
+  .text-body {
+    font-family: 'Inter', sans-serif;
+    @apply text-base md:text-lg font-light leading-relaxed;
+    color: hsl(var(--gray-200));
+  }
+  
+  .text-caption {
+    font-family: 'Inter', sans-serif;
+    @apply text-xs md:text-sm font-medium tracking-widest uppercase;
+    color: hsl(var(--gray-400));
+  }
+  
+  .text-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    @apply tracking-widest uppercase text-xs;
+  }
+  
+  /* Animated Underline */
+  .link-underline {
+    @apply relative inline-block;
+  }
+  
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-px bg-foreground;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  /* Luxury Button */
+  .btn-luxury {
+    @apply relative px-8 py-4 border border-foreground/20 bg-transparent;
+    @apply text-sm tracking-widest uppercase font-medium;
+    @apply transition-all duration-500 ease-out;
+    @apply hover:bg-foreground hover:text-background;
+  }
+  
+  .btn-luxury-primary {
+    @apply relative px-8 py-4 bg-foreground text-background;
+    @apply text-sm tracking-widest uppercase font-medium;
+    @apply transition-all duration-500 ease-out;
+    @apply hover:bg-foreground/90;
+  }
+  
+  /* Luxury Card */
+  .card-luxury {
+    @apply relative bg-card border border-border/50;
+    @apply transition-all duration-500 ease-out;
+    @apply hover:border-border;
+  }
+  
+  .card-luxury::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: linear-gradient(135deg, hsl(0 0% 100% / 0.02), transparent);
+  }
+  
+  .card-luxury:hover::before {
+    @apply opacity-100;
+  }
+  
+  /* Section Styles */
+  .section-padding {
+    @apply py-24 md:py-32 lg:py-40 px-6 md:px-12 lg:px-20;
+  }
+  
+  /* Progress Bar */
+  .progress-luxury {
+    @apply h-px bg-muted overflow-hidden;
+  }
+  
+  .progress-luxury-fill {
+    @apply h-full bg-foreground transition-all duration-1000 ease-out;
+  }
+  
+  /* Side Rail */
+  .side-rail {
+    @apply fixed left-0 top-0 h-full w-16 md:w-20 z-50;
+    @apply flex flex-col items-center justify-between py-8;
+    @apply border-r border-border/30;
+    background: hsl(0 0% 2% / 0.8);
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Scroll Progress */
+  .scroll-progress {
+    @apply fixed top-0 left-0 h-px bg-foreground z-[100];
+    transform-origin: left;
+  }
+  
+  /* Grain Overlay */
+  .grain-overlay {
+    @apply fixed inset-0 pointer-events-none z-[999] opacity-[0.03];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  .animate-blur-in {
+    animation: blurIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes blurIn {
+  from {
+    opacity: 0;
+    filter: blur(20px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(0.5deg); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--gray-950));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--gray-600));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--gray-500));
+}
